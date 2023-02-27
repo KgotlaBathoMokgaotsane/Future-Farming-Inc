@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatelessWidget {
-  const MyTextField({super.key});
+  final controller;
+  final String hintText;
+  final bool obscureText;
+
+  const MyTextField({
+    super.key,
+    required this.controller,
+    required this.hintText,
+    required this.obscureText,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -9,6 +18,8 @@ class MyTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
 
       child: TextField(
+        controller: controller,
+        obscureText: obscureText, //hides password when user types it
         decoration: InputDecoration(
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
@@ -20,6 +31,8 @@ class MyTextField extends StatelessWidget {
 
           fillColor: Colors.grey.shade200,
           filled: true,
+          hintText: hintText, //shows the user what to type
+          hintStyle: TextStyle(color: Colors.grey[500]),
 
         ),
       ),
